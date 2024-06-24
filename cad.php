@@ -17,4 +17,16 @@ if (isset($_POST['veiculo'])) {
     $conn->commit();
     header('location:dashboard.php?page=veiculo');
 }
+
+if (isset($_POST['nomeagencia'])) {
+    $agencia = $_POST['nomeagencia'];
+    $cnpj = $_POST['cnpj'];
+    $stmt = $conn->prepare("INSERT INTO `saepsimu2`.`agencia` (agencia, cnpj) VALUES (?, ?)");
+    $stmt->bindParam(1, $agencia);
+    $stmt->bindParam(2, $cnpj);
+    $conn->beginTransaction();
+    $stmt->execute();
+    $conn->commit();
+    header('location:dashboard.php?page=agencia');
+}
  

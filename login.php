@@ -10,7 +10,7 @@ $options = [
 ];
 $conn = connection();
 try {
-    $select = $conn->prepare("SELECT * FROM adm WHERE email = :email");
+    $select = $conn->prepare("SELECT * FROM funcionario WHERE email = :email");
     $select->bindValue(":email", $email);
     $conn->beginTransaction();
     $select->execute();
@@ -40,8 +40,8 @@ if (isset($result)) {
             break;
         default:
             session_start();
-            $dados = ['idadm' => $select['idadm'], 'nome' => $select['nome'], 'email' => $select['email']];
-            $_SESSION['idadm'] = $select['idadm'];
+            $dados = ['idfuncionario' => $select['idfuncionario'], 'nome' => $select['nome'], 'email' => $select['email']];
+            $_SESSION['idfuncionario'] = $select['idfuncionario'];
             $_SESSION['nome'] = $select['nome'];
             $_SESSION['email'] = $select['email'];
             $response = ['success' => true, 'message' => 'Logado com sucesso!', 'dados' => $dados];

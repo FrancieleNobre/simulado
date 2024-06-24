@@ -1,6 +1,6 @@
 <div class="card">
     <div class="card-header">
-        Agência
+        Veículo
         <button type="button" class="btn btn-outline-success" style="margin-left: 85%;" data-bs-toggle="modal" data-bs-target="#cadastrarveiculo">Cadastrar</button>
     </div>
     <div class="card-body">
@@ -60,14 +60,14 @@
                                     </div>
                                     <div class="modal-body">
                                         <div class="row">
-
-                                        </div>
                                         <div class="col-md-7">
                                             <p><b>Código: </b><?php echo $idveiculo ?></p>
                                             <p><b>Veículo: </b><?php echo $veiculo ?></p>
                                             <p><b>Agência: </b><?php echo $agencia ?></p>
                                             <p><b>Valor: </b><?php echo $valor ?></p>
                                         </div>
+                                        </div>
+                                        
                                         <center><button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Close</button></center>
                                     </div>
                                 </div>
@@ -80,7 +80,7 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header bg-danger text-white">
-                    <h1 class="modal-title fs-5" id="exampleModalLabel">Delete Cliente</h1>
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Delete Veículo</h1>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
@@ -98,7 +98,7 @@
 <?php
                     }
                 } else {
-                    echo 'Nenhum produto encontrado.';
+                    echo 'Nenhum veículo encontrado.';
                 }
 ?>
 </tbody>
@@ -113,7 +113,7 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header bg-success">
-                <h1 class="modal-title fs-5 text-white " id="h1prodcad">Cadastrar Produto</h1>
+                <h1 class="modal-title fs-5 text-white " id="h1prodcad">Cadastrar Veículo</h1>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
@@ -135,8 +135,9 @@
                             if ($select->rowCount() > 0) {
                                 foreach ($select as $table) {
                                     $agencia = $table['agencia'];
+                                    $idagencia = $table['idagencia'];
                             ?>
-                                    <option name="agencia" id="agencia" value="1"><?php echo $agencia ?></option>
+                                    <option name="agencia" id="agencia" value="<?php echo $idagencia ?>"><?php echo $agencia ?></option>
                             <?php
                                 }
                             } else {
@@ -146,7 +147,7 @@
                         </select>
                     </div>
                     <div class="mb-3">
-                        <label for="valor" class="form-label text-dark">Valor</label>
+                        <label for="valor" class="form-label text-dark">Valor:</label>
                         <input type="number" class="form-control" id="valor" name="valor">
                     </div>
                     <center><button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Fechar</button>
